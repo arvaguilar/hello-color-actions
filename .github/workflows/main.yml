@@ -9,7 +9,6 @@ jobs:
         node-version: [20.x]
     steps:
       - uses: actions/checkout@v2
-      - uses: jakejarvis/S3-sync-action@master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -28,7 +27,7 @@ jobs:
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: arvaguilarx2023
-          AWS_ACCESS_KEY_ID: AKIAUEXQMCULDCNFKGVM
-          AWS_SECRET_ACCESS_KEY: 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
-          AWS_REGION: "us-east-2" # optional: defaults to us-east-1
+          AWS_S3_BUCKET: ${{ arvaguilarx2023 }}
+          AWS_ACCESS_KEY_ID: ${{ AWS_SECRET_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "us-east-1" # optional: defaults to us-east-1
